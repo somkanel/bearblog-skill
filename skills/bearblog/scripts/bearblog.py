@@ -118,7 +118,8 @@ class Client:
         url = self.base + path
         if query:
             url += '?' + urllib.parse.urlencode(query)
-        headers = {'Authorization': 'Bearer ' + self.key, 'Accept': 'application/json'}
+        headers = {'Authorization': 'Bearer ' + self.key, 'Accept': 'application/json',
+                   'User-Agent': 'BearBlogSkill (+https://github.com/somkanel/bearblog-skill)'}
         body = None
         if data is not None:
             headers['Content-Type'] = 'application/json'
@@ -159,6 +160,9 @@ class Client:
                         waited += seconds
                         continue
                     raise Failure('429: automatic retry or wait limit reached', status=429, retry_after_seconds=seconds) from None
+                if status == 403 and isinstance(error_body, dict) and error_body.get('cloudflare_error') is True:
+                    raise Failure('Request blocked by Cloudflare; blog subscription status is unknown',
+                                  status=status, server_error=error_body, result_unknown=False) from None
                 messages = {400: 'Invalid request parameters', 401: 'Missing or invalid API key', 403: 'API access requires a paid Bear Blog plan', 404: 'Post or path does not exist'}
                 raise Failure(messages.get(status, 'HTTP request failed; not retried automatically'), status=status,
                               server_error=error_body, result_unknown=method != 'GET' and status >= 500) from None

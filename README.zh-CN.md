@@ -25,10 +25,8 @@
 
 使用 [Skills CLI](https://github.com/vercel-labs/skills)，需要 Node.js/npm 和 Git：
 
-将示例中的 `REPOSITORY_URL` 替换为从仓库页面 **Code → HTTPS** 复制的仓库地址。
-
 ```bash
-npx skills add REPOSITORY_URL --skill bearblog -a codex claude-code -g
+npx skills add somkanel/bearblog-skill --skill bearblog -a codex claude-code -g
 ```
 
 `-a` 后只保留使用的智能体名称；去掉 `-g` 可安装到当前项目。安装后开启新会话。
@@ -37,7 +35,7 @@ npx skills add REPOSITORY_URL --skill bearblog -a codex claude-code -g
 <summary>手动安装</summary>
 
 ```bash
-git clone REPOSITORY_URL
+git clone https://github.com/somkanel/bearblog-skill.git
 ```
 
 克隆仓库，将完整的 `skills/bearblog` 目录复制到对应位置。替换已有技能前，先保留自定义修改。

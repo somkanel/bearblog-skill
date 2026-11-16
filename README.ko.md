@@ -25,10 +25,8 @@ Python 3.9+와 **Bear Blog 유료 요금제**가 필요합니다. **API 키는 �
 
 [Skills CLI](https://github.com/vercel-labs/skills)를 사용합니다. Node.js/npm과 Git이 필요합니다.
 
-예시의 `REPOSITORY_URL`을 저장소 페이지의 **Code → HTTPS**에서 복사한 HTTPS 주소로 바꾸세요.
-
 ```bash
-npx skills add REPOSITORY_URL --skill bearblog -a codex claude-code -g
+npx skills add somkanel/bearblog-skill --skill bearblog -a codex claude-code -g
 ```
 
 `-a` 뒤에는 사용하는 에이전트만 남기세요. `-g`를 빼면 현재 프로젝트에 설치됩니다. 설치 후 새 대화를 여세요.
@@ -37,7 +35,7 @@ npx skills add REPOSITORY_URL --skill bearblog -a codex claude-code -g
 <summary>수동 설치</summary>
 
 ```bash
-git clone REPOSITORY_URL
+git clone https://github.com/somkanel/bearblog-skill.git
 ```
 
 저장소를 복제하고 `skills/bearblog` 디렉터리 전체를 해당 위치에 복사하세요. 기존 스킬을 교체하기 전에 사용자 지정 내용을 보관하세요.

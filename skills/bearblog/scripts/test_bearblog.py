@@ -25,6 +25,7 @@ class Handler(BaseHTTPRequestHandler):
         raw = self.rfile.read(length) if length else b''
         self.server.calls.append({'method': self.command, 'path': self.path,
                                   'auth': self.headers.get('Authorization'),
+                                  'user_agent': self.headers.get('User-Agent'),
                                   'content_type': self.headers.get('Content-Type'),
                                   'body': json.loads(raw) if raw else None})
         if self.server.responses:
@@ -179,6 +180,24 @@ class Tests(unittest.TestCase):
     def test_stdin_json(self):
         with mock.patch.object(b.sys, 'stdin', io.StringIO('{"publish":false}')):
             self.assertEqual(b.payload('-', 'post'), {'publish': False})
+
+    def test_requests_identify_the_api_client(self):
+        self.response({'title': 'Blog'})
+        self.client.request('GET', 'blog/')
+        user_agent = self.server.calls[-1]['user_agent']
+        self.assertIn('BearBlogSkill', user_agent)
+        self.assertNotIn('Mozilla', user_agent)
+
+    def test_cloudflare_403_does_not_claim_blog_is_unpaid(self):
+        self.response({'cloudflare_error': True, 'error_code': 1010,
+                       'title': 'Error 1010: Access denied'}, 403)
+        with self.assertRaises(b.Failure) as caught:
+            self.client.request('GET', 'blog/')
+        details = caught.exception.details
+        self.assertIn('Cloudflare', details['error'])
+        self.assertNotIn('requires a paid', details['error'])
+        self.assertEqual(details['status'], 403)
+        self.assertEqual(len(self.server.calls), 1)
 
     def test_429_retry_after_is_honored_and_bounded(self):
         self.response({'error': 'slow'}, 429, {'Retry-After': '3'})

@@ -25,10 +25,8 @@ Se requieren Python 3.9+ y un **plan de pago de Bear Blog**. **Solo los blogs de
 
 Con [Skills CLI](https://github.com/vercel-labs/skills), usando Node.js/npm y Git:
 
-Sustituye `REPOSITORY_URL` en los ejemplos por la URL HTTPS del repositorio, copiada desde **Code → HTTPS**.
-
 ```bash
-npx skills add REPOSITORY_URL --skill bearblog -a codex claude-code -g
+npx skills add somkanel/bearblog-skill --skill bearblog -a codex claude-code -g
 ```
 
 Deja solo el agente que uses después de `-a`; omite `-g` para instalar en el proyecto. Abre una conversación nueva tras la instalación.
@@ -37,7 +35,7 @@ Deja solo el agente que uses después de `-a`; omite `-g` para instalar en el pr
 <summary>Instalación manual</summary>
 
 ```bash
-git clone REPOSITORY_URL
+git clone https://github.com/somkanel/bearblog-skill.git
 ```
 
 Clona el repositorio y copia el directorio completo `skills/bearblog` en la ubicación correspondiente. Conserva tus personalizaciones antes de sustituir una instalación existente.
