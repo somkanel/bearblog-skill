@@ -1,4 +1,4 @@
 interface:
-  display_name: "Bear Blog"
+  display_name: "🍯 Bear Blog Skill"
   short_description: "Manage Bear Blog posts, pages and settings"
   default_prompt: "Use $bearblog to manage my Bear Blog posts, pages and settings."

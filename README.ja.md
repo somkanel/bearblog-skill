@@ -1,9 +1,9 @@
 <div align="center">
-  <h1>Bear Blog Skill</h1>
+  <h1>🍯 Bear Blog Skill</h1>
   <p><b>エージェントや小さなPython CLIでBear Blogを管理。</b></p>
   <p><a href="README.md">English</a> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.zh-TW.md">繁體中文</a> · <b>日本語</b> · <a href="README.ko.md">한국어</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.de.md">Deutsch</a></p>
   <p>
-    <a href="https://github.com/somkanel/bearblog-skill/actions/workflows/checks.yml"><img src="https://github.com/somkanel/bearblog-skill/actions/workflows/checks.yml/badge.svg" alt="Checks"></a>
+    <a href="https://docs.bearblog.dev/api/"><img src="https://img.shields.io/badge/API-official-green" alt="Official Bear Blog API"></a>
     <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.9%2B-blue" alt="Python 3.9+"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
   </p>
@@ -11,20 +11,24 @@
 
 **Codex、Claude Code、および互換ツール**向けのAgent Skill。[Bear Blog API](https://docs.bearblog.dev/api/) 用のPythonクライアントは単独でも使えます。
 
+本プロジェクトは[Bear Blog公式公開API](https://docs.bearblog.dev/api/)のみを使用します。非公開プロトコル、未公開エンドポイント、非公式のプラットフォーム機能は使用しません。検索と一括編集は公式APIの呼び出しを組み合わせて行います。
+
 - 記事やページの作成、編集、公開、予約公開、削除。
 - ホームページ、ナビゲーション、CSS、対応するブログ設定の更新。
 - 下書きや予約記事の一覧、本文の取得、APIで取得可能なデータのエクスポート。
 
 ## 必要なもの
 
-Python 3.9+、アップグレード済みのBear Blog、**管理画面 → Settings → API** で発行したAPIキーが必要です。独自ドメインを使っていても、元のBearサブドメインを指定します。実行時はPython標準ライブラリのみを使い、macOSとLinuxに対応します。
+Python 3.9+と**Bear Blogの有料プラン**が必要です。**APIキーを発行できるのは有料ブログのみ**で、発行場所は**管理画面 → Settings → API**です。独自ドメインを使っていても、元のBearサブドメインを指定します。実行時はPython標準ライブラリのみを使い、macOSとLinuxに対応します。
 
 ## インストール
 
 [Skills CLI](https://github.com/vercel-labs/skills) を使います。Node.js/npmとGitが必要です。
 
+例の`REPOSITORY_URL`を、リポジトリの**Code → HTTPS**からコピーしたHTTPS URLに置き換えてください。
+
 ```bash
-npx skills add somkanel/bearblog-skill --skill bearblog -a codex claude-code -g
+npx skills add REPOSITORY_URL --skill bearblog -a codex claude-code -g
 ```
 
 `-a` の後には使用するエージェントだけを指定します。`-g` を省くとプロジェクト内にインストールします。完了後に新しい会話を開いてください。
@@ -33,7 +37,7 @@ npx skills add somkanel/bearblog-skill --skill bearblog -a codex claude-code -g
 <summary>手動インストール</summary>
 
 ```bash
-git clone https://github.com/somkanel/bearblog-skill.git
+git clone REPOSITORY_URL
 ```
 
 リポジトリをクローンし、`skills/bearblog` ディレクトリ全体を対応する場所にコピーします。既存のスキルを置き換える前に、独自の変更を保存してください。

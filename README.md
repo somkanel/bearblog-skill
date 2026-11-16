@@ -1,9 +1,9 @@
 <div align="center">
-  <h1>Bear Blog Skill</h1>
+  <h1>🍯 Bear Blog Skill</h1>
   <p><b>Manage your Bear Blog with an agent or a small Python CLI.</b></p>
   <p><b>English</b> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.zh-TW.md">繁體中文</a> · <a href="README.ja.md">日本語</a> · <a href="README.ko.md">한국어</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.de.md">Deutsch</a></p>
   <p>
-    <a href="https://github.com/somkanel/bearblog-skill/actions/workflows/checks.yml"><img src="https://github.com/somkanel/bearblog-skill/actions/workflows/checks.yml/badge.svg" alt="Checks"></a>
+    <a href="https://docs.bearblog.dev/api/"><img src="https://img.shields.io/badge/API-official-green" alt="Official Bear Blog API"></a>
     <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.9%2B-blue" alt="Python 3.9+"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
   </p>
@@ -11,20 +11,24 @@
 
 An Agent Skill for **Codex, Claude Code and compatible tools**, backed by a standalone Python client for the [Bear Blog API](https://docs.bearblog.dev/api/).
 
+This project uses only the [official Bear Blog API](https://docs.bearblog.dev/api/). It does not use private protocols, undocumented endpoints or unofficial platform capabilities. Search and bulk edits combine documented API calls.
+
 - Create, edit, publish, schedule and delete posts or pages.
 - Update the homepage, navigation, CSS and supported blog settings.
 - List drafts and scheduled posts, fetch full bodies and export API-readable content.
 
 ## Requirements
 
-Python 3.9+, an upgraded Bear Blog, and an API key from **dashboard → Settings → API**. Use the original Bear subdomain, including when the blog has a custom domain. Runtime scripts use only the Python standard library; macOS and Linux are supported.
+Python 3.9+ and a **paid Bear Blog plan** are required. **Only paid blogs can generate API keys**, in **dashboard → Settings → API**. Use the original Bear subdomain, including when the blog has a custom domain. Runtime scripts use only the Python standard library; macOS and Linux are supported.
 
 ## Install
 
 With [Skills CLI](https://github.com/vercel-labs/skills), using Node.js/npm and Git:
 
+Replace `REPOSITORY_URL` in the examples with the HTTPS repository URL copied from **Code → HTTPS**.
+
 ```bash
-npx skills add somkanel/bearblog-skill --skill bearblog -a codex claude-code -g
+npx skills add REPOSITORY_URL --skill bearblog -a codex claude-code -g
 ```
 
 Keep only the agent you use after `-a`; omit `-g` for a project install. Open a new conversation after installation.
@@ -33,7 +37,7 @@ Keep only the agent you use after `-a`; omit `-g` for a project install. Open a 
 <summary>Manual installation</summary>
 
 ```bash
-git clone https://github.com/somkanel/bearblog-skill.git
+git clone REPOSITORY_URL
 ```
 
 Clone this repository and copy the complete `skills/bearblog` directory to the appropriate location. Preserve any existing customizations before replacing an installed copy.

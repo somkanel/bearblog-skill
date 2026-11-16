@@ -2,9 +2,11 @@
 
 Source: [official API documentation](https://docs.bearblog.dev/api/).
 
+This client uses only the official public API, with no private protocols, undocumented endpoints or unofficial platform capabilities. Compound workflows combine documented calls.
+
 ## Protocol and endpoints
 
-Base URL: `https://bearblog.dev/{subdomain}/api/v1/`. Use the Bear subdomain even with a custom domain. Send `Authorization: Bearer API_KEY` on every request; POST and PATCH use JSON with `Content-Type: application/json`. Keep trailing slashes. Each key belongs to one upgraded blog; key generation and revocation are dashboard operations.
+Base URL: `https://bearblog.dev/{subdomain}/api/v1/`. Use the Bear subdomain even with a custom domain. Send `Authorization: Bearer API_KEY` on every request; POST and PATCH use JSON with `Content-Type: application/json`. Keep trailing slashes. Only blogs on a paid Bear Blog plan can generate API keys. Each key belongs to one paid blog; key generation and revocation are dashboard operations.
 
 | HTTP | Relative path | CLI command |
 | --- | --- | --- |
@@ -58,7 +60,7 @@ Errors look like `{"error":"title is required"}`. The documentation states that 
 | --- | --- |
 | 400 | Invalid request; use the message to correct it |
 | 401 | Missing or invalid key |
-| 403 | Blog is not upgraded |
+| 403 | API access requires a paid Bear Blog plan |
 | 404 | Post or path does not exist |
 | 429 | Limit of 60 requests per minute; Retry-After gives seconds to wait |
 

@@ -11,7 +11,7 @@ python3 SKILL_DIR/scripts/bearblog.py configure
 python3 SKILL_DIR/scripts/bearblog.py get-blog
 ```
 
-configure asks for a subdomain and a hidden key. For noninteractive use, supply both BEARBLOG_API_KEY and BEARBLOG_SUBDOMAIN in the environment. The default `~/.config/bearblog/config.json` contains subdomain and api_key; global `--config /absolute/path/config.json` selects another file. Environment variables take precedence. Keep credentials out of skill distributions.
+API key generation requires a paid Bear Blog plan. The client uses only the official public API. configure asks for a subdomain and a hidden key. For noninteractive use, supply both BEARBLOG_API_KEY and BEARBLOG_SUBDOMAIN in the environment. The default `~/.config/bearblog/config.json` contains subdomain and api_key; global `--config /absolute/path/config.json` selects another file. Environment variables take precedence. Keep credentials out of skill distributions.
 
 ## Draft, publish and schedule
 

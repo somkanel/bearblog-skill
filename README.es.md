@@ -1,9 +1,9 @@
 <div align="center">
-  <h1>Bear Blog Skill</h1>
+  <h1>🍯 Bear Blog Skill</h1>
   <p><b>Gestiona Bear Blog con un agente o una pequeña CLI de Python.</b></p>
   <p><a href="README.md">English</a> · <a href="README.zh-CN.md">简体中文</a> · <a href="README.zh-TW.md">繁體中文</a> · <a href="README.ja.md">日本語</a> · <a href="README.ko.md">한국어</a> · <b>Español</b> · <a href="README.fr.md">Français</a> · <a href="README.de.md">Deutsch</a></p>
   <p>
-    <a href="https://github.com/somkanel/bearblog-skill/actions/workflows/checks.yml"><img src="https://github.com/somkanel/bearblog-skill/actions/workflows/checks.yml/badge.svg" alt="Checks"></a>
+    <a href="https://docs.bearblog.dev/api/"><img src="https://img.shields.io/badge/API-official-green" alt="Official Bear Blog API"></a>
     <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.9%2B-blue" alt="Python 3.9+"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
   </p>
@@ -11,20 +11,24 @@
 
 Un Agent Skill para **Codex, Claude Code y herramientas compatibles**, con un cliente Python independiente para la [API de Bear Blog](https://docs.bearblog.dev/api/).
 
+Este proyecto utiliza únicamente la [API pública oficial de Bear Blog](https://docs.bearblog.dev/api/). No usa protocolos privados, endpoints no documentados ni funciones no oficiales de la plataforma. Las búsquedas y ediciones por lotes combinan llamadas documentadas.
+
 - Crea, edita, publica, programa y elimina entradas o páginas.
 - Actualiza la página de inicio, la navegación, el CSS y los ajustes admitidos.
 - Consulta borradores y publicaciones programadas, obtén el texto completo y exporta los datos accesibles por la API.
 
 ## Requisitos
 
-Python 3.9+, un Bear Blog con plan mejorado y una clave de API generada en **panel → Settings → API**. Usa el subdominio original de Bear, incluso con un dominio propio. Los scripts solo requieren la biblioteca estándar de Python; son compatibles con macOS y Linux.
+Se requieren Python 3.9+ y un **plan de pago de Bear Blog**. **Solo los blogs de pago pueden generar claves de API**, en **panel → Settings → API**. Usa el subdominio original de Bear, incluso con un dominio propio. Los scripts solo requieren la biblioteca estándar de Python; son compatibles con macOS y Linux.
 
 ## Instalación
 
 Con [Skills CLI](https://github.com/vercel-labs/skills), usando Node.js/npm y Git:
 
+Sustituye `REPOSITORY_URL` en los ejemplos por la URL HTTPS del repositorio, copiada desde **Code → HTTPS**.
+
 ```bash
-npx skills add somkanel/bearblog-skill --skill bearblog -a codex claude-code -g
+npx skills add REPOSITORY_URL --skill bearblog -a codex claude-code -g
 ```
 
 Deja solo el agente que uses después de `-a`; omite `-g` para instalar en el proyecto. Abre una conversación nueva tras la instalación.
@@ -33,7 +37,7 @@ Deja solo el agente que uses después de `-a`; omite `-g` para instalar en el pr
 <summary>Instalación manual</summary>
 
 ```bash
-git clone https://github.com/somkanel/bearblog-skill.git
+git clone REPOSITORY_URL
 ```
 
 Clona el repositorio y copia el directorio completo `skills/bearblog` en la ubicación correspondiente. Conserva tus personalizaciones antes de sustituir una instalación existente.

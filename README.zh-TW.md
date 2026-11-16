@@ -1,9 +1,9 @@
 <div align="center">
-  <h1>Bear Blog Skill</h1>
+  <h1>🍯 Bear Blog Skill</h1>
   <p><b>透過 AI 代理或輕量 Python 命令列管理 Bear Blog。</b></p>
   <p><a href="README.md">English</a> · <a href="README.zh-CN.md">简体中文</a> · <b>繁體中文</b> · <a href="README.ja.md">日本語</a> · <a href="README.ko.md">한국어</a> · <a href="README.es.md">Español</a> · <a href="README.fr.md">Français</a> · <a href="README.de.md">Deutsch</a></p>
   <p>
-    <a href="https://github.com/somkanel/bearblog-skill/actions/workflows/checks.yml"><img src="https://github.com/somkanel/bearblog-skill/actions/workflows/checks.yml/badge.svg" alt="Checks"></a>
+    <a href="https://docs.bearblog.dev/api/"><img src="https://img.shields.io/badge/API-official-green" alt="Official Bear Blog API"></a>
     <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.9%2B-blue" alt="Python 3.9+"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License"></a>
   </p>
@@ -11,20 +11,24 @@
 
 適用於 **Codex、Claude Code 與相容工具** 的 Agent Skill，內附可獨立使用的 [Bear Blog API](https://docs.bearblog.dev/api/) Python 用戶端。
 
+本專案僅使用 [Bear Blog 官方公開 API](https://docs.bearblog.dev/api/)，不使用私有協定、未公開端點或非官方平台功能。搜尋與批次編輯透過組合官方 API 呼叫完成。
+
 - 建立、編輯、發佈、排程發佈及刪除文章或頁面。
 - 更新首頁、導覽列、CSS 與 API 支援的部落格設定。
 - 查詢草稿與排程文章、取得完整內文，匯出 API 可讀取的內容。
 
 ## 使用需求
 
-需要 Python 3.9+、已升級的 Bear Blog，以及在 **後台 → Settings → API** 產生的金鑰。即使使用自訂網域，也請填寫原始 Bear 子網域。執行程式只需 Python 標準函式庫，支援 macOS 和 Linux。
+需要 Python 3.9+ 和 **Bear Blog 付費方案**。**只有付費部落格才能產生 API Key**，入口為 **後台 → Settings → API**。即使使用自訂網域，也請填寫原始 Bear 子網域。執行程式只需 Python 標準函式庫，支援 macOS 和 Linux。
 
 ## 安裝
 
 使用 [Skills CLI](https://github.com/vercel-labs/skills)，需要 Node.js/npm 和 Git：
 
+請將範例中的 `REPOSITORY_URL` 替換為從儲存庫頁面 **Code → HTTPS** 複製的 HTTPS 網址。
+
 ```bash
-npx skills add somkanel/bearblog-skill --skill bearblog -a codex claude-code -g
+npx skills add REPOSITORY_URL --skill bearblog -a codex claude-code -g
 ```
 
 `-a` 後只保留使用的代理工具名稱；移除 `-g` 可安裝至目前專案。安裝後開啟新對話。
@@ -33,7 +37,7 @@ npx skills add somkanel/bearblog-skill --skill bearblog -a codex claude-code -g
 <summary>手動安裝</summary>
 
 ```bash
-git clone https://github.com/somkanel/bearblog-skill.git
+git clone REPOSITORY_URL
 ```
 
 複製儲存庫，將完整的 `skills/bearblog` 目錄複製到對應位置。取代既有技能前，請保留自訂修改。

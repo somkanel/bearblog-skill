@@ -5,11 +5,13 @@ description: Manage Bear Blog posts, drafts, pages, scheduled publishing, homepa
 
 # Bear Blog
 
+Use only the [official public Bear Blog API](https://docs.bearblog.dev/api/). Do not use private protocols, undocumented endpoints or unofficial platform capabilities. Search and bulk edits must combine documented API calls.
+
 Use the bundled Python 3.9+ standard-library client. No runtime packages are required. Replace `SKILL_DIR` in commands with the absolute directory containing this file.
 
 ## Connect
 
-The client needs an API key and the original Bear subdomain label, even for a blog with a custom domain. Generate a key in dashboard → Settings → API. Each key belongs to one upgraded blog.
+The client needs an API key and the original Bear subdomain label, even for a blog with a custom domain. A paid Bear Blog plan is required to generate API keys in dashboard → Settings → API. Each key belongs to one paid blog.
 
 Reuse existing credentials without displaying them. The client accepts either the paired `BEARBLOG_API_KEY` and `BEARBLOG_SUBDOMAIN` environment variables, or `~/.config/bearblog/config.json`. Both environment variables must be supplied together, and take precedence over the file. Global `--config PATH` selects another file.
 

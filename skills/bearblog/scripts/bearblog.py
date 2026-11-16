@@ -159,7 +159,7 @@ class Client:
                         waited += seconds
                         continue
                     raise Failure('429: automatic retry or wait limit reached', status=429, retry_after_seconds=seconds) from None
-                messages = {400: 'Invalid request parameters', 401: 'Missing or invalid API key', 403: 'Blog is not upgraded', 404: 'Post or path does not exist'}
+                messages = {400: 'Invalid request parameters', 401: 'Missing or invalid API key', 403: 'API access requires a paid Bear Blog plan', 404: 'Post or path does not exist'}
                 raise Failure(messages.get(status, 'HTTP request failed; not retried automatically'), status=status,
                               server_error=error_body, result_unknown=method != 'GET' and status >= 500) from None
             except (urllib.error.URLError, TimeoutError, OSError, http.client.HTTPException):
